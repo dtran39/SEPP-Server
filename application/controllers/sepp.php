@@ -88,10 +88,10 @@
           $params = array(
               'api_user'  => $user,
               'api_key'   => $pass,
-              'to'        => $to,
+              'to'        => 'cding9@gatech.edu',
               'subject'   => $subject,
               'text'      => $text,
-              'from'      => 'cding9@gatech.edu',
+              'from'      => 'thanhquanky@gatech.edu'
           );
 
 
