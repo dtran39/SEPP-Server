@@ -84,8 +84,7 @@
           $to = $this->input->get('email', TRUE);
           $subject = 'SOS! Please call 911!';
           $text = '';
-          $lat = $this->input->get('lat', TRUE);
-          $long = $this->input->get('long', TRUE);
+          $text = $this->input->get('message', TRUE);
           $params = array(
               'api_user'  => $user,
               'api_key'   => $pass,
