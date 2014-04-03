@@ -29,10 +29,9 @@
       {
         $this->load->config('twilio');
         $this->load->helper('twilio');
-        $client = get_twilio_service();
-
-        $from = $this->config->item('phone_number');
-        //$to = '9045140079';
+        $service = get_twilio_service();
+        $twilio_settings = $this->config->item('twilio');
+        $from = $twilio_settings['phone_number'];
         $to = '6785770937';
 
         $call = $client->account->calls->create(
