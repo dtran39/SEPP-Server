@@ -26,9 +26,10 @@ function get_twilio_service() {
 		 */
         $CI =& get_instance();
         $CI->config->load('twilio');
-        $account_sid = $CI->config->item('account_sid');
-        $auth_token = $CI->config->item('auth_token');
-		$twilio_service = new Services_Twilio($account_sid, $auth_token);
+        $twilio_settings = $CI->config->item('twilio');
+        $account_sid = $twilio_settings['account_sid'];
+        $auth_token = $twilio_settings['auth_token'];
+		    $twilio_service = new Services_Twilio($account_id, $auth_token);
 	}
 
 	return $twilio_service;

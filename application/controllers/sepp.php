@@ -7,7 +7,8 @@
             $this->load->config('twilio');
             $this->load->helper('twilio');
             $service = get_twilio_service();
-            $from = $this->config->item('phone_number');
+            $twilio_settings = $this->config->item('twilio');
+            $from = $twilio_settings['phone_number'];
             $to = '6785770937';
             $message = $this->input->get('message', TRUE);
 
@@ -78,12 +79,21 @@
 
       public function email()
       {
-          $url = 'https://api.sendgrid.com/';
-          $user = 'thanhquanky';
-          $pass = 'HackDuke2014';
+          // get settings from config file
+          $sendgrid_settings = $this->config->item('sendgrid');
+
+          // get default config
+          $url = $sendgrid_settings['api_url'];
+          $user = $sendgrid_settings['username'];
+          $pass = $sendgrid_settings['password'];
+
+          // email to send to
           $to = $this->input->get('email', TRUE);
+
+          // subject
           $subject = 'SOS! Please call 911!';
-          $text = '';
+
+          // text
           $text = $this->input->get('message', TRUE);
           $params = array(
               'api_user'  => $user,
@@ -91,7 +101,7 @@
               'to'        => $to,
               'subject'   => $subject,
               'text'      => $text,
-              'from'      => 'cding9@gatech.edu',
+              'from'      => $sendgrid_settings['from_email'],
           );
 
 
